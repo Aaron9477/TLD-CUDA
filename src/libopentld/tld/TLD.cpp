@@ -166,12 +166,15 @@ void TLD::fuseHypotheses()
     {
         float confTracker = nnClassifier->classifyBB(currImg, trackerBB);
 
-        if(numClusters == 1 && confDetector > confTracker && tldOverlapRectRect(*trackerBB, *detectorBB) < 0.5)
+        //currBB的选择，currBB决定跟踪框的位置
+        //如果numClusters为1，且检测器确信度高于跟踪器确信度，且检测器和跟踪器重复部分少于50%，选用监测器的结果
+        if(numClusters == 1 && confDetector > confTracker && tldOverlapRectRect(*trackerBB, *detectorBB) < 0.5) 
         {
 
             currBB = tldCopyRect(detectorBB);
             currConf = confDetector;
         }
+        //否则选择跟踪器结果
         else
         {
             currBB = tldCopyRect(trackerBB);

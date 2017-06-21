@@ -82,7 +82,7 @@ void MedianFlowTracker::track(const Mat &prevMat, const Mat &currMat, Rect *prev
         }
         else
         {
-            trackerBB = new Rect(x, y, w, h);
+            trackerBB = new Rect(x, y, w, h); // 此处确定trackerBB
         }
     }
 }

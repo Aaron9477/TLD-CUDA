@@ -160,7 +160,7 @@ void Main::doWork()
 
         float fps = 1 / toc; // calculate fps
 
-        int confident = (tld->currConf >= threshold) ? 1 : 0;
+        int confident = (tld->currConf >= threshold) ? 1 : 0; // 置信度是否大于设定的阈值
 
         if(showOutput || saveDir != NULL)
         {
@@ -174,7 +174,7 @@ void Main::doWork()
             }
 
             sprintf(string, "#%d,Posterior %.2f; fps: %.2f, #numwindows:%d, %s", imAcq->currentFrame - 1, tld->currConf, fps, tld->detectorCascade->numWindows, learningString);
-            CvScalar yellow = CV_RGB(255, 255, 0);
+            CvScalar yellow = CV_RGB(255, 255, 0); // 定义几种颜色
             CvScalar blue = CV_RGB(0, 0, 255);
             CvScalar black = CV_RGB(0, 0, 0);
             CvScalar white = CV_RGB(255, 255, 255);
@@ -182,7 +182,7 @@ void Main::doWork()
             if(tld->currBB != NULL)
             {
                 CvScalar rectangleColor = (confident) ? blue : yellow; // 确信度高蓝色，低黄色？？
-                cvRectangle(img, tld->currBB->tl(), tld->currBB->br(), rectangleColor, 8, 8, 0);
+                cvRectangle(img, tld->currBB->tl(), tld->currBB->br(), rectangleColor, 8, 8, 0); // 长方形绘图函数！！！！！！！！！！！！！！
 
 				if(showTrajectory)
 				{
