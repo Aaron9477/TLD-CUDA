@@ -133,7 +133,7 @@ void Main::doWork()
         if(!skipProcessingOnce)
         {
             getCPUTick(&procInit);
-            tld->processImage(img2);
+            tld->processImage(img2); //整个跟踪监测学习的过程在这里调用
             getCPUTick(&procFinal);
             PRINT_TIMING("FrameProcTime", procInit, procFinal, "\n");
         }
@@ -146,7 +146,7 @@ void Main::doWork()
         {
             if(tld->currBB != NULL)
             {
-                fprintf(resultsFile, "%d %.2d %.2d %.2d %.2d %f\n", imAcq->currentFrame - 1, tld->currBB->x, tld->currBB->y, tld->currBB->width, tld->currBB->height, tld->currConf);
+                fprintf(resultsFile, "%d %.2d %.2d %.2d %.2d %f\n", imAcq->currentFrame - 1, tld->currBB->x, tld->currBB->y, tld->currBB->width, tld->currBB->height, tld->currConf); // 在屏幕输出跟踪位置
             }
             else
             {
@@ -181,7 +181,7 @@ void Main::doWork()
 
             if(tld->currBB != NULL)
             {
-                CvScalar rectangleColor = (confident) ? blue : yellow;
+                CvScalar rectangleColor = (confident) ? blue : yellow; // 确信度高蓝色，低黄色？？
                 cvRectangle(img, tld->currBB->tl(), tld->currBB->br(), rectangleColor, 8, 8, 0);
 
 				if(showTrajectory)
@@ -229,10 +229,7 @@ void Main::doWork()
 
 
 
-		std::cout << "show!" << std::endl;////////////////////////
-
-
-                gui->showImage(img2);
+                //gui->showImage(img2);
                 char key = gui->getKey();
 
                 if(key == 'q') break;
