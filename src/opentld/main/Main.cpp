@@ -179,8 +179,16 @@ void Main::doWork()
             CvScalar black = CV_RGB(0, 0, 0);
             CvScalar white = CV_RGB(255, 255, 255);
 
+
             if(tld->currBB != NULL)
             {
+
+                cout << "currBB is not NULL";//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                cout << "x=" << tld->currBB->x << "y=" << tld->currBB->y;//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
+
+
+
                 CvScalar rectangleColor = (confident) ? blue : yellow; // 确信度高蓝色，低黄色？？
                 cvRectangle(img, tld->currBB->tl(), tld->currBB->br(), rectangleColor, 8, 8, 0); // 长方形绘图函数！！！！！！！！！！！！！！
 
