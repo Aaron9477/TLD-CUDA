@@ -150,6 +150,13 @@ void TLD::fuseHypotheses()
     int numClusters = detectorCascade->detectionResult->numClusters;
     Rect *detectorBB = detectorCascade->detectionResult->detectorBB;
 
+    //cout << "trackerBB->x=" << trackerBB->x << << "trackerBB->y=" << trackerBB->y << endl;//test!!!!!!!!!!!!!!!!!!!
+    //cout << "detectorBB->x=" << detectorBB->x << << "detectorBB->y=" << detectorBB->y << endl;//test!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
 
     currBB = NULL;
     currConf = 0;

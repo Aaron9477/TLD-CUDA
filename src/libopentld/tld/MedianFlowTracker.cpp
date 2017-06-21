@@ -29,8 +29,10 @@
 #include <cmath>
 
 #include "FBTrack.h"
+#include <iostream>////////////////////////////////////
 
 using namespace cv;
+using namespace std;/////////////////////////////////////////////////////////
 
 namespace tld
 {
@@ -55,6 +57,9 @@ void MedianFlowTracker::track(const Mat &prevMat, const Mat &currMat, Rect *prev
 {
     if(prevBB != NULL)
     {
+
+        //std::cout << "prevBB is not NULL" << endl;// test!发现prevBB is not NULL
+
         if(prevBB->width <= 0 || prevBB->height <= 0)
         {
             return;
@@ -66,6 +71,7 @@ void MedianFlowTracker::track(const Mat &prevMat, const Mat &currMat, Rect *prev
         IplImage prevImg = prevMat;
         IplImage currImg = currMat;
 
+        //跟踪模式调用这个函数进行跟踪，预测成功返回success
         int success = fbtrack(&prevImg, &currImg, bb_tracker, bb_tracker, &scale); // 之前图像 当前图像 之前图像的框
 
         //Extract subimage
@@ -75,6 +81,7 @@ void MedianFlowTracker::track(const Mat &prevMat, const Mat &currMat, Rect *prev
         w = floor(bb_tracker[2] - bb_tracker[0] + 1 + 0.5);
         h = floor(bb_tracker[3] - bb_tracker[1] + 1 + 0.5);
 
+        //std::cout << "success=" << success << endl;// test!!发现success一直为1
         //TODO: Introduce a check for a minimum size
         if(!success || x < 0 || y < 0 || w <= 0 || h <= 0 || x + w > currMat.cols || y + h > currMat.rows || x != x || y != y || w != w || h != h) //x!=x is check for nan
         {

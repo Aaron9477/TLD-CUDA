@@ -83,7 +83,6 @@ void Main::doWork()
         initialBB[3] = box.height;
     }
 
-	cout << "selectManually" << endl;//////////////////////////////
 
     FILE *resultsFile = NULL; //用于打开文件储存结果
 
@@ -162,6 +161,7 @@ void Main::doWork()
 
         int confident = (tld->currConf >= threshold) ? 1 : 0; // 置信度是否大于设定的阈值
 
+
         if(showOutput || saveDir != NULL)
         {
             char string[128];
@@ -183,8 +183,8 @@ void Main::doWork()
             if(tld->currBB != NULL)
             {
 
-                cout << "currBB is not NULL";//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-                cout << "x=" << tld->currBB->x << "y=" << tld->currBB->y;//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                //cout << "currBB is not NULL" << endl;//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                //cout << "x=" << tld->currBB->x << "y=" << tld->currBB->y << endl;//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 
 

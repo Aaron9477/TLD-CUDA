@@ -33,6 +33,9 @@
 #include "Median.h"
 #include "Lk.h"
 
+#include <iostream>/////////////////////////////////////////////////////////////
+using namespace std;/////////////////////////////////////////////////////////
+
 /**
  * Calculate the bounding box of an Object in a following Image.
  * Imgs aren't changed.
@@ -133,7 +136,7 @@ int fbtrack(IplImage *imgI, IplImage *imgJ, float *bb, float *bbnew,
     //      nRealPoints);
     //  showIplImage(imgI);
 
-    predictbb(bb, startPoints, targetPoints, nAfterFbUsage, bbnew, scaleshift);
+    predictbb(bb, startPoints, targetPoints, nAfterFbUsage, bbnew, scaleshift); //跟踪模式预测bbx的位置
     /*printf("bbnew: %f,%f,%f,%f\n", bbnew[0], bbnew[1], bbnew[2], bbnew[3]);
      printf("relative scale: %f \n", scaleshift[0]);*/
     //show picture with tracked bb
@@ -143,6 +146,8 @@ int fbtrack(IplImage *imgI, IplImage *imgJ, float *bb, float *bbnew,
     free(targetPoints);
     free(fbLkCleaned);
     free(nccLkCleaned);
+
+    std::cout << "bbnew->x=" << bbnew[1] << "bbnew->y=" << bbnew[1] << endl;//// test!!!!发现bbbox一直不变
 
     if(medFb > 10) return 0;
     else return 1;
