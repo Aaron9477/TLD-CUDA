@@ -229,8 +229,10 @@ void Main::doWork()
 
 
 
-                //gui->showImage(img2);
-                char key = gui->getKey();
+                //gui->showImage(img2); // ！！！！！！！！！！！！！！！！！！！！！！
+                cvShowImage("TLD", img2);
+                //char key = gui->getKey(); // ！！！！！！！！！！！！！！！！！
+                char key = cvWaitKey(10);
 
                 if(key == 'q') break;
 
